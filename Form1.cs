@@ -19,18 +19,12 @@ namespace BlazorWinForms
         {
             InitializeComponent();
 
-            var serviceCollection = new ServiceCollection();
-            serviceCollection.AddBlazorWebView();
-            serviceCollection.AddSingleton<WeatherForecastService>();
-
-            var blazor = new BlazorWebView()
-            {
-                Dock = DockStyle.Fill,
-                HostPage = "wwwroot/index.html",
-                Services = serviceCollection.BuildServiceProvider(),
-            };
-            blazor.RootComponents.Add<Main>("#app");
-            Controls.Add(blazor);
+            var services = new ServiceCollection();
+            services.AddBlazorWebView();
+            services.AddSingleton<WeatherForecastService>();
+            blazorWebView1.HostPage = "wwwroot\\index.html";
+            blazorWebView1.Services = services.BuildServiceProvider();
+            blazorWebView1.RootComponents.Add<Main>("#app");
         }
 
     }
