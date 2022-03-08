@@ -18,17 +18,11 @@ namespace BlazorWinForms
         {
             InitializeComponent();
 
-            var serviceCollection = new ServiceCollection();
-            serviceCollection.AddBlazorWebView();
-
-            var blazor = new BlazorWebView()
-            {
-                Dock = DockStyle.Fill,
-                HostPage = "index.html",
-                Services = serviceCollection.BuildServiceProvider(),
-            };
-            blazor.RootComponents.Add<Counter>("#app");
-            Controls.Add(blazor);
+            var services = new ServiceCollection();
+            services.AddBlazorWebView();
+            blazorWebView1.HostPage = "wwwroot\\index.html";
+            blazorWebView1.Services = services.BuildServiceProvider();
+            blazorWebView1.RootComponents.Add<Counter>("#app");
         }
 
     }
