@@ -20,7 +20,7 @@ namespace BlazorWinForms
             InitializeComponent();
 
             var services = new ServiceCollection();
-            services.AddBlazorWebView();
+            services.AddWindowsFormsBlazorWebView();
             services.AddSingleton<WeatherForecastService>();
             blazorWebView1.HostPage = "wwwroot\\index.html";
             blazorWebView1.Services = services.BuildServiceProvider();
